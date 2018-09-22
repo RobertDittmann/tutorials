@@ -1,0 +1,17 @@
+target/
+test-output/
+
+.classpath
+.project
+.settings/
+.metadata
+
+*.xml.versionsBackup
+jgitflow.log
+.repository
+
+# IntelliJ files and folders
+out/
+.idea
+*.iml
+allocations16-web/.tern-project
