@@ -11,6 +11,7 @@ import com.marklogic.client.query.QueryManager;
 import com.marklogic.client.query.StringQueryDefinition;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class ReadJSON {
@@ -38,12 +39,13 @@ public class ReadJSON {
         final MatchDocumentSummary[] matchResults = resultsHandle.getMatchResults();
         final List<TestClass> testClasses = new ArrayList<>();
 
-        for (MatchDocumentSummary summary : matchResults) {
+        Arrays.asList(matchResults).forEach(matchDocumentSummary -> {
             final StringHandle content = new StringHandle();
-            final StringHandle read = jsonDocumentManager.read(summary.getUri(), content);
-            TestClass testClass = GSON.fromJson(read.get(), TestClass.class);
+            final StringHandle read = jsonDocumentManager.read(matchDocumentSummary.getUri(), content);
+            final TestClass testClass = GSON.fromJson(read.get(), TestClass.class);
             testClasses.add(testClass);
-        }
+        });
+
         System.out.println(testClasses);
 
         databaseClient.release();
