@@ -11,6 +11,7 @@
     <modules>
         <module>tutorialmarklogic</module>
         <module>tutorialtibcoems</module>
+        <module>tutorialmultithreading</module>
     </modules>
 
     <dependencies>
